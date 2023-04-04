@@ -46,9 +46,9 @@ const tablesReducer = (statePart = [], action) => {
         table.id === action.payload.id ? { ...table, ...action.payload } : table
       );
     case UPDATE_TABLE:
-      return [...action.payload];
+      return [...action.payload]
     default:
-      return statePart;
+      return statePart
   };
 };
 export default tablesReducer;

@@ -20,7 +20,7 @@ const Table = ({ action }) => {
   if (!table) return <Loader></Loader>;
   else
     return (
-      <>
+      <div>
         <h1>Table {table.id}</h1>
         <TableForm
           action={handleSubmit}
@@ -30,7 +30,7 @@ const Table = ({ action }) => {
           maxPeopleAmount={table.maxPeopleAmount}
           bill={table.bill}
         />
-      </>
+      </div>
     );
 };
 

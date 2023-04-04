@@ -9,12 +9,12 @@
       "bill": "2131"
     },
     {
+      "id": "2",
       "table": "2",
+      "status": "Cleaning",
       "peopleAmount": "0",
       "maxPeopleAmount": "3",
-      "status": "Reserved",
-      "bill": "0",
-      "id": "2"
+      "bill": "0"
     },
     {
       "table": "3",

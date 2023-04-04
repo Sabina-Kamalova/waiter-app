@@ -11,7 +11,7 @@ const Tables = () => {
   if (!tables.length) return <Loader></Loader>
   else
   return (
-    <>
+    <div>
       <h1>All tables</h1>
       {tables.map((table, id) => (
         <Card key={id} style={{ border: 'none' }}>
@@ -41,7 +41,7 @@ const Tables = () => {
           </Card.Body>
         </Card>
       ))}
-    </>
+    </div>
   );
 };
 
