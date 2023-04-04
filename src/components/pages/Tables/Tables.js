@@ -1,3 +1,4 @@
+import React from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -7,9 +8,10 @@ import Loader from '../../features/Loader/Loader';
 const Tables = () => {
   const tables = useSelector(getAllTables);
 
-  if (!tables.length) return <Loader></Loader>;
+  if (!tables.length) return <Loader></Loader>
+  else
   return (
-    <div>
+    <>
       <h1>All tables</h1>
       {tables.map((table, id) => (
         <Card key={id} style={{ border: 'none' }}>
@@ -39,8 +41,8 @@ const Tables = () => {
           </Card.Body>
         </Card>
       ))}
-    </div>
-  )
-}
+    </>
+  );
+};
 
 export default Tables;

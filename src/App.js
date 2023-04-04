@@ -1,11 +1,16 @@
+
+import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
-import { Routes, Route } from 'react-router-dom';
-import NotFound from './components/pages/NotFound/NotFound';
-import Table from './components/pages/Table/Table';
-import Tables from './components/pages/Tables/Tables';
+
+//components
+import TableList from './components/pages/Tables/Tables';
+import TableDetails from './components/pages/Table/Table';
 import Header from './components/views/Header/Header';
 import Footer from './components/views/Footer/Footer';
-import { useEffect } from 'react';
+import NotFound from './components/pages/NotFound/NotFound';
+
+//redux
+import { Routes, Route } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { fetchTables } from './redux/tablesRedux';
 import { fetchStatus } from './redux/statusRedux';
@@ -15,18 +20,18 @@ const App = () => {
 
   useEffect(() => dispatch(fetchTables()), [dispatch]);
   useEffect(() => dispatch(fetchStatus()), [dispatch]);
-
+  
   return (
     <Container>
       <Header />
       <Routes>
-        <Route path="/" element={<Tables />} />
-        <Route path="/table/:tableId" element={<Table />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path='/' element={<TableList />}></Route>
+        <Route path='/table/:id' element={<TableDetails />}></Route>
+        <Route path='*' element={<NotFound />}></Route>
       </Routes>
       <Footer />
     </Container>
-  )
-}
+  );
+};
 
 export default App;

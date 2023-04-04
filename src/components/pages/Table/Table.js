@@ -1,10 +1,11 @@
-import { useParams, Navigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getTableById, editTable, getAllTables } from "../../../redux/tablesRedux";
-import TableForm from "../../features/TableForm/TableForm";
-import Loader from "../../features/Loader/Loader";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, useParams } from 'react-router-dom';
+import { editTable, getTableById, getAllTables} from '../../../redux/tablesRedux';
+import Loader from '../../features/Loader/Loader';
+import TableForm from '../../features/TableForm/TableForm';
 
-const Table = () => {
+const Table = ({ action }) => {
   const { id } = useParams();
   const table = useSelector((state) => getTableById(state, id));
   const allTables = useSelector(getAllTables);
@@ -16,17 +17,21 @@ const Table = () => {
   };
 
   if (!table && allTables.length) return <Navigate to='/' />;
-  if (!table) return <Loader />;
+  if (!table) return <Loader></Loader>;
   else
-  	return (
-    	<div>
-      	<h1>Table {table.id}</h1>
-        <TableForm action={handleSubmit} id={table.id} status={table.status}
-				 peopleAmount={table.peopleAmount} maxPeopleAmount={table.maxPeopleAmount}
-				 bill={table.bill}
+    return (
+      <>
+        <h1>Table {table.id}</h1>
+        <TableForm
+          action={handleSubmit}
+          id={table.id}
+          status={table.status}
+          peopleAmount={table.peopleAmount}
+          maxPeopleAmount={table.maxPeopleAmount}
+          bill={table.bill}
         />
-    	</div>
-  	)
-}
+      </>
+    );
+};
 
 export default Table;
